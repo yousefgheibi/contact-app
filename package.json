@@ -1,0 +1,26 @@
+{
+  "name": "contactapp",
+  "version": "1.0.0",
+  "description": "a simple app in terminal side with nodejs",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yousefgheibi/contactapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yousefgheibi/contactapp/issues"
+  },
+  "homepage": "https://github.com/yousefgheibi/contactapp#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

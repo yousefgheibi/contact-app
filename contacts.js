@@ -13,7 +13,6 @@ const addContact = (fullname, phone, email) => {
   }
 };
 
-
 const listContacts = () => {
   const contacts = loadContacts();
   if (contacts.length > 0) {
@@ -30,6 +29,17 @@ const listContacts = () => {
   }
 };
 
+const removeContact = (fullname) => {
+  const contacts = loadContacts();
+  const filteredContacts = contacts.filter((c) => c.fullname !== fullname);
+
+  if (contacts.length > filteredContacts.length) {
+    saveContacts(filteredContacts);
+    console.log(`${fullname} has been removed.`);
+  } else {
+    console.log("Contact not found.");
+  }
+};
 
 const loadContacts = () => {
   try {
@@ -42,12 +52,13 @@ const loadContacts = () => {
   }
 };
 
-const saveContact = (contacts)=>{
-    const data = JSON.stringify(contacts);
-    fs.writeFileSync("contacts.json",data);
-}
+const saveContact = (contacts) => {
+  const data = JSON.stringify(contacts);
+  fs.writeFileSync("contacts.json", data);
+};
 
 module.exports = {
   addContact,
   listContacts,
+  removeContact,
 };

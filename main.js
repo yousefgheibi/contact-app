@@ -1,8 +1,9 @@
 const yargs = require("yargs");
 
-const { addContact, listContacts } = require("./contacts");
+const { addContact, listContacts, removeContact } = require("./contacts");
 yargs.command({
   command: "create",
+  aliases: ["c"],
   describe: "[create new contact]",
   builder: {
     fullname: {
@@ -22,13 +23,13 @@ yargs.command({
       describe: "Person email Address",
       demandOption: true,
       type: "string",
-    }
+    },
   },
 
-  handler({fullname, phone, email}) {
+  handler({ fullname, phone, email }) {
     //   console.log(fullname,phone,email);
     addContact(fullname, phone, email);
-  }
+  },
 });
 
 yargs.command({
@@ -37,6 +38,23 @@ yargs.command({
   describe: "[listing the saved contacts]",
   handler() {
     listContacts();
+  },
+});
+
+yargs.command({
+  command: "remove",
+  aliases: ["r"],
+  describe: "[remove contact]",
+  builder: {
+    fullname: {
+      alias: "f",
+      describe: "Person fullname",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler({ fullname }) {
+    removeContact(fullname);
   },
 });
 

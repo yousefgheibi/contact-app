@@ -1,6 +1,6 @@
 const yargs = require("yargs");
 
-const { addContact } = require("./contacts");
+const { addContact, listContacts } = require("./contacts");
 yargs.command({
   command: "create",
   describe: "[create new contact]",
@@ -29,6 +29,15 @@ yargs.command({
     //   console.log(fullname,phone,email);
     addContact(fullname, phone, email);
   }
+});
+
+yargs.command({
+  command: "list",
+  aliases: ["l"],
+  describe: "[listing the saved contacts]",
+  handler() {
+    listContacts();
+  },
 });
 
 yargs.parse();

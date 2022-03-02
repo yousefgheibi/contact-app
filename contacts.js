@@ -13,6 +13,24 @@ const addContact = (fullname, phone, email) => {
   }
 };
 
+
+const listContacts = () => {
+  const contacts = loadContacts();
+  if (contacts.length > 0) {
+    console.log("Your contacts:\n");
+    // console.table(contacts);
+    contacts.forEach((contact) => {
+      console.log(`\t"Fullname": ${contact.fullname}`);
+      console.log(`\t"Phone": ${contact.phone}`);
+      console.log(`\t"Email": ${contact.email}`);
+      console.log("\t-------------------------");
+    });
+  } else {
+    console.log("You don't have any contacts.");
+  }
+};
+
+
 const loadContacts = () => {
   try {
     const dataBuffer = fs.readFileSync("contacts.json");
@@ -31,4 +49,5 @@ const saveContact = (contacts)=>{
 
 module.exports = {
   addContact,
+  listContacts,
 };

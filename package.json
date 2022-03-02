@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/yousefgheibi/contactapp#readme",
   "dependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "yargs": "^17.3.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.21"

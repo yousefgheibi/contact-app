@@ -1,14 +1,34 @@
-// console.log(process.argv[1]);
+const yargs = require("yargs");
 
-const command = process.argv[2];
+yargs.command({
+  command: "create",
+  describe: "[create new contact]",
+  builder: {
+    fullname: {
+      alias: "f",
+      describe: "Person fullname",
+      demandOption: true,
+      type: "string",
+    },
+    phone: {
+      alias: "p",
+      describe: "Person phone Number",
+      demandOption: true,
+      type: "number",
+    },
+    email: {
+      alias: "e",
+      describe: "Person email Address",
+      demandOption: true,
+      type: "string",
+    }
+  },
 
-switch (command) {
-  case "add":
-    console.log("Adding ... ");
-    break;
-  case "remove":
-    console.log("Removeing ... ");
-    break;
-  default:
-    console.log("Command not valid!");
-}
+  handler({fullname, phone, email}) {
+      console.log(fullname,phone,email);
+  }
+});
+
+yargs.parse();
+
+// console.log(yargs.argv);
